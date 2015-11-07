@@ -5,7 +5,7 @@ My ansible project to configure servers.
     ansible-playbook -i production site.yml
 
 # Test
-Create the machine with:
+Create the vagrant environment with:
 
     vagrant up
 
@@ -15,4 +15,4 @@ Access with:
 
 Run the playbook again:
 
-    ansible-playbook -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory --private-key=.vagrant/machines/default/virtualbox/private_key -u vagrant site.yml
+    ansible-playbook -i vagrant site.yml
