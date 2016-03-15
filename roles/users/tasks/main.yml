@@ -1,0 +1,13 @@
+- name: Creates admin group
+  group: name=admin system=yes
+
+- name: Creates users
+  user: name="{{ item.name }}" group="{{ item.group }}" shell="{{ item.shell }}"
+  with_items: "{{users}}"
+
+- name: Adds SSH Keys
+  authorized_key: user="{{ item.name }}" key="{{ item.key }}"
+  with_items: "{{users}}"
+
+- name: Give sudo to admin group
+  lineinfile: dest=/etc/sudoers state=present regexp='^%admin' line='%admin ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'

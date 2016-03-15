@@ -1,5 +1,0 @@
-users:
-  - name: andre
-    group: admin
-    shell: /bin/bash
-    key: andre.pub
