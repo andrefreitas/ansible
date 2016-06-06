@@ -1,0 +1,8 @@
+- name: Update APT cache
+  apt: update_cache=yes
+
+- name: Install packages
+  apt: name="{{ item }}"
+  with_items:
+    - htop
+    - vim
