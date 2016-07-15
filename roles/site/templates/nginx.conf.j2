@@ -1,0 +1,20 @@
+server {
+   listen 80;
+   server_name {{site_domain}};
+
+   return 301 https://{{site_domain}}$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name {{site_domain}};
+
+  ssl_certificate     /srv/ssl/{{site_domain}}.crt;
+  ssl_certificate_key /srv/ssl/{{site_domain}}.key;
+  ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers         HIGH:!aNULL:!MD5;
+
+  location / {
+    proxy_pass http://localhost:4001;
+  }
+}

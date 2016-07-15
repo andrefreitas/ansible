@@ -1,7 +1,8 @@
 - hosts: all
   become: yes
   roles:
-    - {role: "vitalk.secure-ssh", tags: "ssh"}
+    - {role: vitalk.secure-ssh, tags: "ssh"}
     - {role: bootstrap, tags: "bootstrap"}
     - {role: packages, tags: "packages"}
     - {role: users, tags: "users"}
+    - {role: docker, tags: "docker"}
