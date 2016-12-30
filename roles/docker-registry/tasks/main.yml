@@ -1,0 +1,26 @@
+- name: Basic auth credentials
+  copy: content="{{ docker_registry.htpasswd }}" dest=/srv/settings/registry_htpasswd
+  notify: restart registry
+
+- name: Registry container
+  docker:
+    state: reloaded
+    restart_policy: always
+    name: registry
+    image: registry:2.5.1
+    net: bridge
+    ports:
+      - "4002:5000"
+    volumes:
+      - /srv/containers/registry/:/var/lib/registry
+      - /srv/ssl/{{docker_registry.domain}}.crt:/ssl/{{docker_registry.domain}}.crt
+      - /srv/ssl/{{docker_registry.domain}}.key:/ssl/{{docker_registry.domain}}.key
+      - /srv/settings/registry_htpasswd:/htpasswd/docker
+    env:
+      REGISTRY_HTTP_TLS_CERTIFICATE: /ssl/{{docker_registry.domain}}.crt
+      REGISTRY_HTTP_TLS_KEY: /ssl/{{docker_registry.domain}}.key
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_PATH: /htpasswd/docker
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+      REGISTRY_HTTP_SECRET: "{{ docker_registry.http_secret }}"
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
