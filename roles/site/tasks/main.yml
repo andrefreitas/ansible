@@ -1,27 +1,7 @@
-- name: container
-  docker:
+- docker:
     name: site
     image: andrefreitas/site
     net: bridge
     state: reloaded
     ports:
       - 4001:80
-
-- name: Create SSL Directory
-  file: state=directory recurse=yes dest=/srv/ssl
-
-- name: SSL Private Key
-  copy: content={{ andrefreitas_ssl_key }} dest=/srv/ssl/{{site_domain}}.key
-
-- name: SSL Certficate
-  copy: content={{ andrefreitas_ssl_crt }} dest=/srv/ssl/{{site_domain}}.crt
-
-- name: nginx configuration
-  template: src=nginx.conf.j2 dest=/etc/nginx/sites-available/site.conf
-  notify:
-    - reload nginx
-
-- name: enable website
-  file: state=link src=/etc/nginx/sites-available/site.conf dest=/etc/nginx/sites-enabled/site.conf
-  notify:
-    - reload nginx

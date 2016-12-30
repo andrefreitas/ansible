@@ -1,2 +1,7 @@
 dependencies:
-  - nginx
+  - role: nginx
+  - role: nginx-proxy
+    domain: andrefreitas.pt
+    port: 4001
+    ssl_key: "{{andrefreitas_ssl_key}}"
+    ssl_crt: "{{andrefreitas_ssl_crt}}"

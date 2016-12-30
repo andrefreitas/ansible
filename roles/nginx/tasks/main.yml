@@ -1,2 +1,5 @@
 - name: Install NGINX
   apt: name=nginx
+
+- name: Create SSL Directory
+  file: state=directory recurse=yes dest=/srv/ssl
