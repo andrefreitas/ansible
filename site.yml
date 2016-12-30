@@ -1,2 +1,2 @@
-- include: bootstrap.yml
-- include: websites.yml
+- include: bootstrap.yml tags=bootstrap
+- include: services.yml tags=services

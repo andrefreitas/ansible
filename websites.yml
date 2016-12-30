@@ -1,3 +1,0 @@
-- hosts: trinity.andrefreitas.pt
-  roles:
-    - {role: "site", tags: ["site"]}

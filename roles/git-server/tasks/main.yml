@@ -1,0 +1,16 @@
+- apt: name=git-core
+- user: name=git shell=/bin/bash
+
+- file:
+    path: /home/git/.ssh
+    owner: git
+    group: git
+    state: directory
+    mode: 0700
+
+- template:
+    src: authorized_keys.j2
+    dest: /home/git/.ssh/authorized_keys
+    owner: git
+    group: git
+    mode: 0600

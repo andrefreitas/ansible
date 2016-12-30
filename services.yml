@@ -1,0 +1,4 @@
+- hosts: web1.andrefreitas.pt
+  roles:
+    - {role: "site", tags: ["site"]}
+    - {role: "git-server", tags: ["git-server"]}
