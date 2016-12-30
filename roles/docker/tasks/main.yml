@@ -16,10 +16,10 @@
 - name: Create Directory for settings
   file: state=directory dest=/srv/settings
 
-# - name: Login to docker.andrefreitas.pt
-#   docker_login:
-#     registry: "{{ docker_registry.domain}}"
-#     username: "{{ docker_registry.username }}"
-#     password: "{{ docker_registry.password }}"
-#     email: "{{ docker_registry.email }}"
-#     reauth: yes
+- name: Login to docker.andrefreitas.pt
+  docker_login:
+    registry: "{{ docker_registry.domain}}"
+    username: "{{ docker_registry.username }}"
+    password: "{{ docker_registry.password }}"
+    email: "{{ docker_registry.email }}"
+    reauth: yes

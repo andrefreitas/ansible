@@ -1,7 +1,8 @@
 - docker:
     name: site
-    image: andrefreitas/site
+    image: docker.andrefreitas.pt/site
     net: bridge
     state: reloaded
+    pull: always
     ports:
       - 4001:80
