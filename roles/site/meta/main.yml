@@ -4,3 +4,4 @@ dependencies:
     port: 4001
     ssl_key: "{{andrefreitas_ssl_key}}"
     ssl_crt: "{{andrefreitas_ssl_crt}}"
+    proxy_pass_protocol: http
