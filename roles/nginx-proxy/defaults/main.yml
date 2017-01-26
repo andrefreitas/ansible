@@ -1,2 +1,3 @@
 proxy_pass_protocol: http
 max_body_size: 100M
+extra_server_configs:

@@ -1,0 +1,12 @@
+- name: cgit container
+  docker:
+    state: reloaded
+    restart_policy: always
+    name: cgit
+    image: docker.andrefreitas.pt/cgit
+    net: bridge
+    pull: always
+    ports:
+      - "4003:80"
+    volumes:
+      - "/home/git:/mnt/git"

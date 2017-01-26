@@ -5,3 +5,7 @@ dependencies:
     ssl_key: "{{andrefreitas_ssl_key}}"
     ssl_crt: "{{andrefreitas_ssl_crt}}"
     proxy_pass_protocol: http
+    extra_server_configs: |
+      location /git {
+        proxy_pass http://localhost:4003;
+      }

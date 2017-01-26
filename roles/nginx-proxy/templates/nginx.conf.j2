@@ -19,4 +19,6 @@ server {
   location / {
     proxy_pass {{proxy_pass_protocol}}://localhost:{{port}};
   }
+
+  {{extra_server_configs}}
 }

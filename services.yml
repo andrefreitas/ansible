@@ -2,4 +2,5 @@
   roles:
     - {role: "site", tags: ["site"]}
     - {role: "git-server", tags: ["git-server"]}
+    - {role: "cgit", tags: ["cgit"]}
     - {role: "docker-registry", tags: ["docker-registry"]}
