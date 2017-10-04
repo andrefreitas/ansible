@@ -1,6 +1,11 @@
 - hosts: web1.andrefreitas.pt
   roles:
+    - role: certbot
+      tags: ["certbot"]
+      certbot_domains:
+        - andrefreitas.pt
+        - docker.andrefreitas.pt
+    - {role: "docker-registry", tags: ["docker-registry"]}
     - {role: "site", tags: ["site"]}
     - {role: "git-server", tags: ["git-server"]}
     - {role: "cgit", tags: ["cgit"]}
-    - {role: "docker-registry", tags: ["docker-registry"]}

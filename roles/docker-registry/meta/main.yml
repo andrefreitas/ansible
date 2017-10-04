@@ -1,8 +1,5 @@
 dependencies:
   - role: nginx-proxy
     domain: "{{docker_registry.domain}}"
-    port: 4002
-    ssl_key: "{{docker_andrefreitas_ssl_key}}"
-    ssl_crt: "{{docker_andrefreitas_ssl_crt}}"
-    proxy_pass_protocol: https
+    proxy_pass: https://localhost:4002
     max_body_size: 1G

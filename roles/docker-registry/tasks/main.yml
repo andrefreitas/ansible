@@ -13,12 +13,12 @@
       - "4002:5000"
     volumes:
       - /srv/containers/registry/:/var/lib/registry
-      - /srv/ssl/{{docker_registry.domain}}.crt:/ssl/{{docker_registry.domain}}.crt
-      - /srv/ssl/{{docker_registry.domain}}.key:/ssl/{{docker_registry.domain}}.key
+      - /etc/letsencrypt/live/{{docker_registry.domain}}/fullchain.pem:/ssl/fullchain.pem
+      - /etc/letsencrypt/live/{{docker_registry.domain}}/privkey.pem:/ssl/privkey.pem
       - /srv/settings/registry_htpasswd:/htpasswd/docker
     env:
-      REGISTRY_HTTP_TLS_CERTIFICATE: /ssl/{{docker_registry.domain}}.crt
-      REGISTRY_HTTP_TLS_KEY: /ssl/{{docker_registry.domain}}.key
+      REGISTRY_HTTP_TLS_CERTIFICATE: /ssl/fullchain.pem
+      REGISTRY_HTTP_TLS_KEY: /ssl/privkey.pem
       REGISTRY_AUTH: htpasswd
       REGISTRY_AUTH_HTPASSWD_PATH: /htpasswd/docker
       REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm

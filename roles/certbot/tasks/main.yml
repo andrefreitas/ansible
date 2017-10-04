@@ -1,0 +1,12 @@
+- apt_repository: repo=ppa:certbot/certbot
+- apt: update_cache=yes name=python-certbot-nginx
+- pip: name=certbot-dns-route53
+- shell: |
+    certbot certonly \
+    -n --agree-tos --email {{certbot_email}} \
+    --dns-route53 \
+    -d {{item}}
+  environment:
+    AWS_ACCESS_KEY_ID: "{{aws_access_key_id}}"
+    AWS_SECRET_ACCESS_KEY: "{{aws_secret_access_key}}"
+  with_items: "{{certbot_domains}}"

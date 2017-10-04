@@ -11,13 +11,13 @@ server {
 
   client_max_body_size {{max_body_size}};
 
-  ssl_certificate     /srv/ssl/{{domain}}.crt;
-  ssl_certificate_key /srv/ssl/{{domain}}.key;
+  ssl_certificate     /etc/letsencrypt/live/{{domain}}/fullchain.pem ;
+  ssl_certificate_key /etc/letsencrypt/live/{{domain}}/privkey.pem;
   ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
   ssl_ciphers         HIGH:!aNULL:!MD5;
 
   location / {
-    proxy_pass {{proxy_pass_protocol}}://localhost:{{port}};
+    proxy_pass {{proxy_pass}};
   }
 
   {{extra_server_configs}}
