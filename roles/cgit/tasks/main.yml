@@ -1,11 +1,9 @@
 - name: cgit container
-  docker:
-    state: reloaded
-    restart_policy: always
+  docker_container:
     name: cgit
     image: docker.andrefreitas.pt/cgit
-    net: bridge
-    pull: always
+    restart_policy: always
+    pull: true
     ports:
       - "4003:80"
     volumes:

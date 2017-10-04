@@ -1,2 +1,2 @@
-- include: bootstrap.yml tags=bootstrap
-- include: services.yml tags=services
+- import_playbook: bootstrap.yml tags=bootstrap
+- import_playbook: services.yml tags=services

@@ -3,12 +3,10 @@
   notify: restart registry
 
 - name: Registry container
-  docker:
-    state: reloaded
-    restart_policy: always
+  docker_container:
     name: registry
     image: registry:2.5.1
-    net: bridge
+    restart_policy: always
     ports:
       - "4002:5000"
     volumes:
