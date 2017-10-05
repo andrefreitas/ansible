@@ -1,12 +1,21 @@
 - apt_repository: repo=ppa:certbot/certbot
 - apt: update_cache=yes name=python-certbot-nginx
 - pip: name=certbot-dns-route53
+
+- file: path=~/.aws state=directory mode=0770
+- template: src=credentials.j2 dest=~/.aws/credentials
+
 - shell: |
     certbot certonly \
     -n --agree-tos --email {{certbot_email}} \
     --dns-route53 \
     -d {{item}}
-  environment:
-    AWS_ACCESS_KEY_ID: "{{aws_access_key_id}}"
-    AWS_SECRET_ACCESS_KEY: "{{aws_secret_access_key}}"
   with_items: "{{certbot_domains}}"
+
+- cronvar:
+    name: PATH
+    value: $PATH:/usr/local/bin
+- cron:
+    name: renew letsencrypt certificates
+    special_time: weekly
+    job: certbot renew --post-hook "systemctl reload nginx"
