@@ -1,0 +1,36 @@
+- apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ {{ansible_lsb.codename}}-pgdg main"
+    state: present
+
+- apt_key:
+    data: "{{ lookup('file', 'apt.asc') }}"
+    state: present
+
+- apt:
+    name: "postgresql-{{postgresql_version}}"
+
+- template:
+    src: postgresql.conf.j2
+    dest: "/etc/postgresql/{{postgresql_version}}/main/postgresql.conf"
+  notify:
+    - restart postgresql
+
+- pip:
+    name: psycopg2
+
+
+- postgresql_user:
+    name: "{{item.name}}"
+    password: "{{item.password}}"
+    encrypted: yes
+  with_items: "{{postgresql_users}}"
+  become_user: postgres
+
+- postgresql_db:
+    name: "{{item.name}}"
+  with_items: "{{postgresql_databases}}"
+  become_user: postgres
+
+- command: "psql -c \"{{item.cmd}}\" -d {{item.db}}"
+  with_items: "{{postgresql_commands}}"
+  become_user: postgres

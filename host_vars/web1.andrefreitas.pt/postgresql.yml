@@ -1,0 +1,11 @@
+# postgresql.conf
+postgresql_max_connections: 200
+postgresql_shared_buffers: 512MB
+postgresql_effective_cache_size: 1536MB
+postgresql_work_mem: 2621kB
+postgresql_maintenance_work_mem: 128MB
+postgresql_min_wal_size: 1GB
+postgresql_max_wal_size: 2GB
+postgresql_checkpoint_completion_target: 0.7
+postgresql_wal_buffers: 16MB
+postgresql_random_page_cost: 1.1

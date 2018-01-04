@@ -10,3 +10,4 @@
     - {role: "git-server", tags: ["git-server"]}
     - {role: "cgit", tags: ["cgit"]}
     - {role: "vpn-server", tags: ["vpn-server"]}
+    - {role: "postgresql", tags: ["postgresql"]}
