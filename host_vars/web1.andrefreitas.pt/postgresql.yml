@@ -9,3 +9,8 @@ postgresql_max_wal_size: 2GB
 postgresql_checkpoint_completion_target: 0.7
 postgresql_wal_buffers: 16MB
 postgresql_random_page_cost: 1.1
+postgresql_listen_addresses: "*"
+
+# pg_hba.conf
+pg_hba:
+  - host all all 0.0.0.0/0 md5

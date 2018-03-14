@@ -12,6 +12,10 @@ postgresql_checkpoint_completion_target: 0.5
 postgresql_wal_buffers: -1
 postgresql_default_statistics_target: 100
 postgresql_random_page_cost: 4.0
+postgresql_listen_addresses: localhost
 
 # databases
 postgresql_databases: []
+
+# pg_hba
+pg_hba: []

@@ -11,3 +11,4 @@
     - {role: "cgit", tags: ["cgit"]}
     - {role: "vpn-server", tags: ["vpn-server"]}
     - {role: "postgresql", tags: ["postgresql"]}
+    - {role: "rentalis-api", tags: ["rentalis-api"]}

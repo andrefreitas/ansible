@@ -9,15 +9,18 @@
 - apt:
     name: "postgresql-{{postgresql_version}}"
 
-- template:
-    src: postgresql.conf.j2
-    dest: "/etc/postgresql/{{postgresql_version}}/main/postgresql.conf"
+- name: Configuration files
+  template:
+    src: "{{item}}.conf.j2"
+    dest: "/etc/postgresql/{{postgresql_version}}/main/{{item}}.conf"
   notify:
     - restart postgresql
+  with_items:
+    - postgresql
+    - pg_hba
 
 - pip:
     name: psycopg2
-
 
 - postgresql_user:
     name: "{{item.name}}"

@@ -1,0 +1,7 @@
+- docker_container:
+    name: rentalis_api
+    image: "docker.andrefreitas.pt/rentalis-api:{{rentalis_api_version}}"
+    restart_policy: always
+    ports:
+      - "{{rentalis_api_port}}:3000"
+    env: "{{rentalis_api_config}}"
