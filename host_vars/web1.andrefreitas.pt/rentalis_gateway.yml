@@ -1,0 +1,6 @@
+rentalis_domain: rentalis-stg.andrefreitas.pt
+rentalis_servers:
+  api:
+    - localhost:5001
+  backoffice:
+    - localhost:5002

@@ -1,0 +1,9 @@
+- name: nginx configuration
+  template: src=nginx.conf.j2 dest="/etc/nginx/sites-available/{{rentalis_domain}}.conf"
+  notify:
+    - reload nginx
+
+- name: enable website
+  file: state=link src=/etc/nginx/sites-available/{{rentalis_domain}}.conf dest=/etc/nginx/sites-enabled/{{rentalis_domain}}.conf
+  notify:
+    - reload nginx

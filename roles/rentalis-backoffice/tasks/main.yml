@@ -1,0 +1,6 @@
+- docker_container:
+    name: rentalis_backoffice
+    image: "docker.andrefreitas.pt/rentalis-backoffice:{{rentalis_backoffice_version}}"
+    restart_policy: always
+    ports:
+      - "{{rentalis_backoffice_port}}:80"

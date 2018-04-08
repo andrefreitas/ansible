@@ -1,0 +1,4 @@
+certbot_domains:
+  - andrefreitas.pt
+  - docker.andrefreitas.pt
+  - rentalis-stg.andrefreitas.pt

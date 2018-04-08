@@ -1,10 +1,6 @@
 - hosts: web1.andrefreitas.pt
   roles:
-    - role: certbot
-      tags: ["certbot"]
-      certbot_domains:
-        - andrefreitas.pt
-        - docker.andrefreitas.pt
+    - {role: "certbot", tags: ["certbot"]}
     - {role: "docker-registry", tags: ["docker-registry"]}
     - {role: "site", tags: ["site"]}
     - {role: "git-server", tags: ["git-server"]}
@@ -12,3 +8,5 @@
     - {role: "vpn-server", tags: ["vpn-server"]}
     - {role: "postgresql", tags: ["postgresql"]}
     - {role: "rentalis-api", tags: ["rentalis-api"]}
+    - {role: "rentalis-backoffice", tags: ["rentalis-backoffice"]}
+    - {role: "rentalis-gateway", tags: ["rentalis-gateway"]}
