@@ -18,4 +18,4 @@
 - cron:
     name: renew letsencrypt certificates
     special_time: weekly
-    job: certbot renew --post-hook "systemctl reload nginx"
+    job: certbot renew --post-hook "systemctl reload nginx" | logger -t certbot-renew
